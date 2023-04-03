@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   //[Host Info]
-  const host = "http://localhost:5000/";
-  // const host = "https://fluffy-cod-leather-jacket.cyclic.app/";
+  // const host = "http://localhost:5000/";
+  const host = "https://fluffy-cod-leather-jacket.cyclic.app/";
   //[Host Info END]
 
   //[Context state variables]
