@@ -1,0 +1,7 @@
+{
+    "name": "Rentify",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+}
