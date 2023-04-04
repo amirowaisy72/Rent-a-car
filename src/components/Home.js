@@ -1,20 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import contextCreator from "./context/contextCreator";
-import VStatus from "./homeComponents/VStatus";
 //Application Update
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Link } from "react-router-dom";
-import CustomerHome from "./customer/CustomerHome";
 //Application Update END
 
 const Home = () => {
   //[Context state variables]
   const context = useContext(contextCreator);
-  const { showUpdate, getVersion, updateLink, user } = context;
+  const { showUpdate, getVersion, updateLink, home } = context;
   //[Context state variables END]
+  const [render, setRender] = useState('')
   
   //[Version Controller]
   useEffect(() => {
@@ -56,7 +55,7 @@ const Home = () => {
       {/* Update Application END */}
 
       {
-        user.type !== 'CUSTOMER' ? <VStatus /> : <CustomerHome />
+        home
       }
       {/* <div style={style} className="text-center p-3 my-2">
         <small>Designed & developed by Amir Owaisy (Master)</small>

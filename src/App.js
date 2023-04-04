@@ -13,19 +13,17 @@ import ThisMonth from "./components/ThisMonth";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import CustomerHome from "./components/customer/CustomerHome";
+import { useContext, useEffect, useState } from "react";
 
 function App() {
+
   return (
     <>
       <AllStates>
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route
-              exact
-              path=""
-              element={localStorage.getItem("token") ? <Home /> : <Login />}
-            ></Route>
+            <Route exact path="" element={<Home />}></Route>
 
             <Route exact path="/dispatch" element={<Dispatch />}></Route>
             <Route

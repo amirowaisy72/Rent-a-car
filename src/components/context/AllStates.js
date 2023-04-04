@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import context from "./contextCreator";
+import CustomerHome from "../customer/CustomerHome";
+import VStatus from "../homeComponents/VStatus";
 
 const AllStates = (props) => {
   //Info
@@ -12,12 +14,14 @@ const AllStates = (props) => {
   const [loader, setLoader] = useState(false);
   const [theme, setTheme] = useState("dark");
   const [user, setUser] = useState({});
+  const [home, setHome] = useState("")
   const [showUpdate, setShowUpdate] = useState(false);
   const [updateLink, setUpdateLink] = useState("");
   const [token, setToken] = useState(null);
   // const host = "http://localhost:5000/";
   const host = "https://fluffy-cod-leather-jacket.cyclic.app/";
 
+  //App.js
   //dispatchComponent => CustomerDetails
   //dispatchComponent => Price
   //dispatchComponent => VehicleDetails
@@ -57,6 +61,7 @@ const AllStates = (props) => {
 
   //Get Logged in user detail
   const logedUser = async () => {
+    setHome('')
     //Api Call
     if (localStorage.getItem("token")) {
       const response = await fetch(`${host}auth/getuser`, {
@@ -68,11 +73,14 @@ const AllStates = (props) => {
       });
       const json = await response.json();
       if (json.success) {
-        console.log("success");
         setTheme(json.user.theme);
         setUser(json.user);
+        if(json.user.type === 'CUSTOMER'){
+          setHome(<CustomerHome />)
+        }else{
+          setHome(<VStatus />)
+        }
       } else {
-        console.log("fail");
         // console.log(json.reason);
       }
     } else {
@@ -482,6 +490,7 @@ const AllStates = (props) => {
           showUpdate,
           updateLink,
           token,
+          home,
           allVehicles,
           allDispatches,
           allExpenses,
