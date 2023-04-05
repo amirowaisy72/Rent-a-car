@@ -23,7 +23,7 @@ function App() {
         <BrowserRouter>
           <Header />
           <Routes>
-            <Route exact path="" element={<Home />}></Route>
+            <Route exact path="" element={localStorage.getItem("token") ? <Home /> : <Login />}></Route>
 
             <Route exact path="/dispatch" element={<Dispatch />}></Route>
             <Route

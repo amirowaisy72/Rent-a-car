@@ -30,7 +30,7 @@ const AllStates = (props) => {
 
   //Update Controller
   //Get from backend
-  const frontEndVersion = 1;
+  const frontEndVersion = 3;
   const getVersion = async () => {
     // //Api Call
     const response = await fetch(`${host}version`, {
